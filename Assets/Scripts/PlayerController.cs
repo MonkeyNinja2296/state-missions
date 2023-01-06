@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float xSpeed;
     public float jumpStrength;
 
+    public bool idiot;
     void Start()
     {
         isGrounded = false;
@@ -106,13 +107,16 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground") {
+        if (collision.gameObject.tag == "Wall" ) {
             isGrounded = true;
         }
-
+        if (collision.gameObject.tag == "Ground" ) {
+            isGrounded = true;
+        }
         if (collision.gameObject.tag == "Enemy") {
             // Respawn
-            SceneManager.LoadScene(0);
+            idiot = true;
+            //SceneManager.LoadScene(0);
         }
     }
 }
